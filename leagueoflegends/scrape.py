@@ -18,7 +18,7 @@ def scrape_items():
 	soup = BeautifulSoup(page)
 	for tbl in soup.findAll('table', {'class': 'champion_item'}):
 		num = _num_from_link(tbl.find('a', {'class': 'lol_item'}))
-		name = tbl.find('span', {'class': 'highlight'}).text
+		name = unicode(tbl.find('span', {'class': 'highlight'}).string)
 		cost = int(tbl.find('td', {'class': 'cost highlight'}).find('span', {'class': 'big'}).contents[0])
 
 		built_from_nums = []
