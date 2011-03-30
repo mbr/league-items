@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding=utf8
 
-import yaml
-
 import re
 import urllib2
 
@@ -48,10 +46,3 @@ def parse_items():
 		}
 
 	return items
-
-
-if '__main__' == __name__:
-	d = parse_items()
-	with file(item_file_name, 'w') as f:
-		yaml.dump(d, f)
-	print "wrote",item_file_name

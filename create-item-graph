@@ -3,8 +3,8 @@
 
 import networkx
 
-from lolitems import ItemGraph
-from scrape import item_file_name
+from leagueoflegends import ItemGraph
+from leagueoflegends.scrape import item_file_name
 G = ItemGraph.from_item_file(item_file_name)
 
 outfilename = 'item-graph.dot'
