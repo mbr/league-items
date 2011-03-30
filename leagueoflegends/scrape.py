@@ -29,6 +29,10 @@ def scrape_items():
 				for built_from_link in ul.findAll('a'):
 					built_from_nums.append(_num_from_link(built_from_link))
 
+		if not num: raise Exception('Failed to scrape number out of %r' % tbl)
+		if not name: raise Exception('Failed to scrape name out of %r' % tbl)
+		if None == cost: raise Exception('Failed to scrape cost out of %r' % tbl)
+
 		yield num, name, cost, built_from_nums
 
 
