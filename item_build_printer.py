@@ -50,7 +50,22 @@ if 2 != len(sys.argv):
 	sys.exit(1)
 
 db = ItemGraph.from_item_file(item_file_name)
-build = yaml.load(file(sys.argv[1]))
+build_inp = yaml.load(file(sys.argv[1]))
+
+build = []
+for nick in build_inp:
+	candidates = db.find_item_by_fuzzy_nick(nick)
+	results = []
+	score = candidates[0][0]
+	while candidates and candidates[0][0] == score:
+		s, n = candidates.pop(0)
+		results.append(n)
+
+	if len(results) > 1:
+		raise Exception('Cannot decide what you mean by %r. Candidates: %r' % (nick, results))
+
+	build.append(results[0])
+
 inv = TrackingInventory(db)
 
 for item in build:
