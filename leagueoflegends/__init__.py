@@ -9,12 +9,6 @@ import networkx
 from dameraulevenshtein import dameraulevenshtein
 from fuzzy_substring_match import fuzzy_substring
 
-def nickname_distance(w1, w2):
-	# prepare both words
-	pass
-
-
-
 class ItemGraph(networkx.DiGraph):
 	def add_item(self, name, cost, built_from = []):
 		self.add_node(name, cost = cost)
@@ -54,23 +48,3 @@ class ItemGraph(networkx.DiGraph):
 
 		results.sort()
 		return results
-
-
-if '__main__' == __name__:
-	import sys
-
-	from scrape import item_file_name
-	G = ItemGraph.from_item_file(item_file_name)
-
-	while True:
-		print "enter a term"
-		input = sys.stdin.readline().strip()
-		print "DL"
-		results = G.find_item_by_dl(input)
-		for r in results[:10]:
-			print "%d: %s" % r
-
-		print "fuzzy"
-		results = G.find_item_by_fuzzy_nick(input)
-		for r in results[:10]:
-			print "%d: %s" % r
