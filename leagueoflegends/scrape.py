@@ -6,8 +6,6 @@ import urllib2
 
 from BeautifulSoup import BeautifulSoup
 
-item_file_name = 'items.lol'
-
 _num_re = re.compile(r'(\d+)')
 def _num_from_link(a):
 	return int(_num_re.search(a['href']).group(1))

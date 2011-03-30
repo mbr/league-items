@@ -44,12 +44,12 @@ class TrackingInventory(Inventory):
 		self.recently_bought.append(name)
 
 
-if 2 != len(sys.argv):
-	print "usage: %s itembuild.yaml" % (sys.argv[0])
+if 3 != len(sys.argv):
+	print "usage: %s DB_FILE ITEMBUILD_FILE" % (sys.argv[0])
 	sys.exit(1)
 
-db = ItemGraph.from_item_file(item_file_name)
-build_inp = yaml.load(file(sys.argv[1]))
+db = ItemGraph.from_item_file(sys.argv[1])
+build_inp = yaml.load(file(sys.argv[2]))
 
 build = []
 for nick in build_inp:

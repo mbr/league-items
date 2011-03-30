@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 # coding=utf8
 
+import os
+import sys
 import yaml
 
-from leagueoflegends.scrape import parse_items, item_file_name
+from leagueoflegends.scrape import parse_items
 
 if '__main__' == __name__:
+	if not len(sys.argv) == 2:
+		print 'usage: %s DB_OUTPUT_FILE' % (os.path.basename(sys.argv[0]))
+		sys.exit(1)
+
 	d = parse_items()
-	with file(item_file_name, 'w') as f:
+	with file(sys.argv[1], 'w') as f:
 		yaml.dump(d, f)
-	print "wrote",item_file_name
+	print "wrote",sys.argv[1]
