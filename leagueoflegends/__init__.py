@@ -114,7 +114,7 @@ class Build(object):
 	@classmethod
 	def from_yaml(cls, db, s):
 		# perform nickname guessing
-		fuzzy_item_list = yaml.load(s)
+		fuzzy_item_list = yaml.safe_load(s)
 		return cls(db, fuzzy_item_list)
 
 	def to_purchase_yaml(self):
