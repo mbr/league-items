@@ -9,6 +9,6 @@ setup(name = 'leagueoflegends',
       author = 'Marc Brinkmann',
       url = 'https://github.com/mbr/league-items',
       packages = ['leagueoflegends'],
-      install_requires = ['networkx>=1.2', 'BeautifulSoup'],
+      install_requires = ['networkx>=1.2', 'BeautifulSoup', 'PyYAML'],
       scripts = ['download-items', 'item-build-printer'],
      )
